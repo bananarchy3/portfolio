@@ -3,14 +3,14 @@ import json
 import csv
 from flask import Flask, render_template, request
 
-app = Flask(__name__, template_folder='template')
+app = Flask(__name__, template_folder='./template')
 file_handler = FileHandler('errorlog.txt')
 file_handler.setLevel(WARNING)
 
 
-@app.route('/<string:page_name>')
-def html_page(page_name):
-    return render_template(page_name)
+@app.route('/')
+def home():
+   return render_template('index.html')
 
 
 @app.route('/submit_form', methods=['POST', 'GET'])
